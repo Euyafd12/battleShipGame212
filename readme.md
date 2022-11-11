@@ -1,1 +1,1 @@
-We will right our plan here I think - this is progress
+We will be planning our battleship game here:
