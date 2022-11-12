@@ -1,6 +1,5 @@
 # Heading1
-# *__Hybrid__*
-Plan for Battleship :
+# *Plan for Battleship: *
 
 1. Create networking class
 2. Create board class (matrix)
