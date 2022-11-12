@@ -1,4 +1,5 @@
 # Heading1
+# *__Hybrid__*
 Plan for Battleship :
 
 1. Create networking class
