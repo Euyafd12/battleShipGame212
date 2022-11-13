@@ -1,52 +1,43 @@
-public class networkingTest {
+import java.io.*;
+import java.net.*;
 
-    public Server(int port)
-    {
-        // starts server and waits for a connection
-        try
-        {
-            server = new ServerSocket(port);
-            System.out.println("Server started");
+class networkingTest {
 
-            System.out.println("Waiting for a client ...");
+    public static void main(String[] args) throws Exception {
 
-            socket = server.accept();
-            System.out.println("Client accepted");
+        ServerSocket ss = new ServerSocket(888);
 
-            // takes input from the client socket
-            in = new DataInputStream(
-                    new BufferedInputStream(socket.getInputStream()));
+        Socket s = ss.accept();
+        System.out.println("Connection established");
 
-            String line = "";
+        PrintStream ps = new PrintStream(s.getOutputStream());
 
-            // reads message from client until "Over" is sent
-            while (!line.equals("Over"))
-            {
-                try
-                {
-                    line = in.readUTF();
-                    System.out.println(line);
+        BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
 
-                }
-                catch(IOException i)
-                {
-                    System.out.println(i);
-                }
+        BufferedReader kb = new BufferedReader(new InputStreamReader(System.in));
+
+        //https://www.geeksforgeeks.org/socket-programming-in-java/
+        //https://www.geeksforgeeks.org/establishing-the-two-way-communication-between-server-and-client-in-java/
+
+        while (true) {
+
+            String str, str1;
+
+            while ((str = br.readLine()) != null) {
+                System.out.println(str);
+                str1 = kb.readLine();
+
+                ps.println(str1);
             }
-            System.out.println("Closing connection");
 
-            // close connection
-            socket.close();
-            in.close();
-        }
-        catch(IOException i)
-        {
-            System.out.println(i);
-        }
-    }
+            ps.close();
+            br.close();
+            kb.close();
+            ss.close();
+            s.close();
 
-    public static void main(String args[])
-    {
-        Server server = new Server(5000);
+            System.exit(0);
+
+        }
     }
 }
