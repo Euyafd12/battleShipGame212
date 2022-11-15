@@ -6,7 +6,7 @@ class clientTestingserverstuff {
     //This is for Leo
     public static void main(String[] args) throws Exception {
 
-        Socket s = new Socket("127.0.0.1", 888);
+        Socket s = new Socket("10.117.50.201", 888);
 
         DataOutputStream dos = new DataOutputStream(s.getOutputStream());
 
