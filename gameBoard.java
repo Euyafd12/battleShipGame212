@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class gameBoard {
     private char[][] board;
 
@@ -29,6 +32,15 @@ public class gameBoard {
         }
 
         return ret;
+    }
+
+    public void addShip(char x, char y) {
+
+        Map<String, Integer> aToZ = new HashMap<>();
+
+        aToZ.put(A, 1);
+
+
     }
 
 }
