@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class gameBoard {
     private char[][] board;
 
@@ -29,6 +32,10 @@ public class gameBoard {
         }
 
         return ret;
+    }
+
+    public void addShip(int x1, int y1, int x2, int y2) {
+
     }
 
 }
