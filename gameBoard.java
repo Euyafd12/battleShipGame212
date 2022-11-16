@@ -34,12 +34,7 @@ public class gameBoard {
         return ret;
     }
 
-    public void addShip(char x, char y) {
-
-        Map<String, Integer> aToZ = new HashMap<>();
-
-        aToZ.put(A, 1);
-
+    public void addShip(int x1, int y1, int x2, int y2) {
 
     }
 
