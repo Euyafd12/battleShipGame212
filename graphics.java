@@ -133,11 +133,11 @@ public class graphics implements EventListener {
         */
     }
 
-    public
 
 
 
     public static void main(String[] args) {
+
         graphics g = new graphics();
     }
 }
