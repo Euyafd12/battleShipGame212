@@ -18,10 +18,10 @@ public class graphics implements EventListener {
         panel = new JPanel();
         panel.setLayout(new GridLayout(2, 2));
 
-        JButton A1 = new JButton("A0");
-        JButton B1 = new JButton("B0");
-        JButton A2 = new JButton("A1");
-        JButton B2 = new JButton("B1");
+        JButton A1 = new JButton("A1");
+        JButton B1 = new JButton("B1");
+        JButton A2 = new JButton("A2");
+        JButton B2 = new JButton("B2");
 
         panel.add(A1);
         panel.add(B1);
@@ -132,9 +132,6 @@ public class graphics implements EventListener {
         JButton A1 = new JButton("A0");
         */
     }
-
-
-
 
     public static void main(String[] args) {
 
