@@ -5,6 +5,7 @@ public class Player extends gameBoard{
 
     public Player(){
         board1=gameBoard.super();
+        
         name ="";
 
     }
