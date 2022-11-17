@@ -22,8 +22,5 @@ public class Player extends gameBoard{
         count--;
     }
 
-    public String boardOneLine() {
 
-        return super.boardOneLine();
-    }
 }
