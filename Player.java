@@ -1,10 +1,10 @@
 public class Player extends gameBoard{
 
     private String name;
-    private char[][] board;
+    private char[][] board1;
 
     public Player(){
-        board=super.gameBoard();
+        board1=gameBoard.super();
         name ="";
 
     }
@@ -17,10 +17,10 @@ public class Player extends gameBoard{
             for (int j = 0; j < 10; j++) {
 
                 if (j != 9) {
-                    ret += board[i][j] + ", ";
+                    ret += board1[i][j] + ", ";
                 }
                 else {
-                    ret += board[i][j];
+                    ret += board1[i][j];
                 }
             }
         }
