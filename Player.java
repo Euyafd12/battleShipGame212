@@ -1,31 +1,29 @@
 public class Player extends gameBoard{
 
     private String name;
-    private char[][] board1;
+    private int count;
 
-    public Player(){
-        board1=gameBoard.super();
-        
-        name ="";
+    public Player(String s){
+        //board1=gameBoard.super();
+       super();
+       name = s;
+       count=14;
 
+    }
+
+
+    public String printName()
+    {
+        return name;
+    }
+
+    public void hits()
+    {
+        count--;
     }
 
     public String boardOneLine() {
 
-        String ret = "";
-
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-
-                if (j != 9) {
-                    ret += board1[i][j] + ", ";
-                }
-                else {
-                    ret += board1[i][j];
-                }
-            }
-        }
-
-        return ret;
+        return super.boardOneLine();
     }
 }
