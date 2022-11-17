@@ -22,5 +22,8 @@ public class Player extends gameBoard{
         count--;
     }
 
+    public String attackGuess(String coord) {
 
+        return coord;
+    }
 }
