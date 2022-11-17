@@ -23,10 +23,10 @@ public class gameBoard {
             for (int j = 0; j < 10; j++) {
 
                 if (j != 9) {
-                    ret += board[i][j] + ", ";
+                    ret += board[i][j] + ",";
                 }
                 else {
-                    ret += board[i][j];
+                    ret += board[i][j] + "|";
                 }
             }
         }
@@ -34,8 +34,9 @@ public class gameBoard {
         return ret;
     }
 
-    public void addShip(int x1, int y1, int x2, int y2) {
-
+    public void changeCoordinate(int x, int y)
+    {
+        board[x][y]='1';
     }
 
 }
