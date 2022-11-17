@@ -4,7 +4,7 @@ public class Player extends gameBoard{
     private char[][] board;
 
     public Player(){
-        board=super.gameBoard();
+       //board=super.gameBoard();
         name ="";
 
     }
