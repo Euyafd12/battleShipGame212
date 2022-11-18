@@ -62,10 +62,10 @@ public class graphics extends JPanel implements MouseListener{
 
         String ret = "";
 
-        if (x >= 970 && x <= 1870 && y >= 165 && y <= 1065) {
+        if (x >= 965 && x <= 1800 && y >= 160 && y <= 970) {
 
-            int baseX = 970;
-            int baseY = 165;
+            int baseX = 965;
+            int baseY = 160;
 
             Map<Integer, String> letter = new HashMap<>();
 
@@ -73,7 +73,7 @@ public class graphics extends JPanel implements MouseListener{
                 letter.put(i + 1, "" + (char) ('A' + i));
             }
 
-            ret += letter.get(((y - baseY) / 90) + 1) + "" + (((x - baseX) / 90) + 1);
+            ret += letter.get(((y - baseY) / 80) + 1) + "" + (((x - baseX) / 90) + 1);
             return ret;
         }
         else {
@@ -83,22 +83,8 @@ public class graphics extends JPanel implements MouseListener{
 
 
     public static void main(String[] args) {
-
         new graphics().display();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public void mouseReleased(MouseEvent e) {
