@@ -1,10 +1,10 @@
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+
 
 public class graphics extends JPanel implements MouseListener {
     private int x, y, baseX, baseY;
@@ -24,7 +24,6 @@ public class graphics extends JPanel implements MouseListener {
         letter = new HashMap<>();
         reverse = new HashMap<>();
 
-
         for (int i = 0; i < 10; i++) {
 
             letter.put(i + 1, "" + (char) ('A' + i));
@@ -38,13 +37,6 @@ public class graphics extends JPanel implements MouseListener {
         imageBOOM = new ImageIcon("boom.jpg").getImage();
         imageNOTBOOM = new ImageIcon("notBoom.jpg").getImage();
 
-    }
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-        x = MouseInfo.getPointerInfo().getLocation().x;
-        y = MouseInfo.getPointerInfo().getLocation().y;
-        repaint();
     }
     public void display() {
 
@@ -71,38 +63,9 @@ public class graphics extends JPanel implements MouseListener {
         g2d.setColor(Color.BLACK);
         g2d.drawRect(50, 75, 350, 900);
 
-        //Explosion(coordinateClick(), g2d);
-        Misses(coordinateClick(), g2d);
-
-    }
-
-    public void Explosion(String a, Graphics2D g2d) {
-
-        if (!a.equals("Out of Bounds")) {
-
-            hits.add(a);
-        }
-        for (String hit : hits) {
-
-            int C1 = Integer.parseInt(hit.substring(1)) - 1;
-            int C2 = reverse.get(hit.substring(0, 1)) - 1;
-
-            g2d.drawImage(imageBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);
-        }
-    }
-
-    public void Misses(String a, Graphics2D g2d) {
-
-        if (!a.equals("Out of Bounds")) {
-
-            misses.add(a);
-        }
-        for (String miss : misses) {
-
-            int C1 = Integer.parseInt(miss.substring(1)) - 1;
-            int C2 = reverse.get(miss.substring(0, 1)) - 1;
-
-            g2d.drawImage(imageNOTBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);
+        if (!coordinateClick().equals("Out of Bounds")) {
+            Explosion(coordinateClick(), g2d);
+            //Misses(coordinateClick(), g2d);
         }
     }
 
@@ -120,28 +83,69 @@ public class graphics extends JPanel implements MouseListener {
         }
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+        x = MouseInfo.getPointerInfo().getLocation().x;
+        y = MouseInfo.getPointerInfo().getLocation().y;
+        repaint();
+    }
+
+    public void Explosion(String a, Graphics2D g2d) {
+
+        if (!a.equals("Out of Bounds")) {
+
+            hits.add(a);
+        }
+        for (String hit : hits) {
+
+            int C1 = Integer.parseInt(hit.substring(1)) - 1;
+            int C2 = reverse.get(hit.substring(0, 1)) - 1;
+
+            g2d.drawImage(imageBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);
+        }
+        audio("explosionBOOM.wav");
+    }
+
+    public void Misses(String a, Graphics2D g2d) {
+
+        if (!a.equals("Out of Bounds")) {
+
+            misses.add(a);
+        }
+        for (String miss : misses) {
+
+            int C1 = Integer.parseInt(miss.substring(1)) - 1;
+            int C2 = reverse.get(miss.substring(0, 1)) - 1;
+
+            g2d.drawImage(imageNOTBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);;
+        }
+        audio("waterSplash.wav");
+    }
+
+    public void audio(String a) {
+
+        try {
+            AudioInputStream system = AudioSystem.getAudioInputStream(new File(a));
+            Clip sound = AudioSystem.getClip();
+            sound.open(system);
+            sound.start();
+        }
+        catch (Exception ignore) {}
+    }
+
     public static void main(String[] args) {
 
         new graphics().display();
     }
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        //Dead method
-    }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-        //Dead method
-    }
-
+    public void mouseReleased(MouseEvent e) {}
     @Override
-    public void mouseExited(MouseEvent e) {
-        //Dead method
-    }
-
+    public void mouseEntered(MouseEvent e) {}
     @Override
-    public void mousePressed(MouseEvent e) {
-        //Dead method
-    }
+    public void mouseExited(MouseEvent e) {}
+    @Override
+    public void mousePressed(MouseEvent e) {}
 }
