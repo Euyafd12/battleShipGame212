@@ -7,17 +7,20 @@ public class gameRunner {
 
         while (true) {
 
-            String a = eyad.coordinateClick();
+            while (true) {
 
-            //This needs to be here some reason
-            System.out.print("");
+                String a = eyad.coordinateClick();
 
-            if (a != null && !a.equals("ZZ")) {
-                eyad.addShips(a);
-                break;
+                //This needs to be here some reason
+                System.out.print("");
+
+                if (a != null && !a.equals("ZZ")) {
+
+                    eyad.addShips(a);
+                    System.out.println("\n" + eyad.boardOneLine());
+                    break;
+                }
             }
         }
-
-        System.out.println("\n" + eyad.boardOneLine());
     }
 }

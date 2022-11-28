@@ -44,7 +44,7 @@ public class Player extends GUI {
     public void addShips(String coord) {
 
         if (!coord.equals("ZZ")) {
-            board[Integer.parseInt(coord.substring(1)) - 1][reverse.get(coord.substring(0, 1)) - 1] = 'S';
+            board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
         }
     }
 

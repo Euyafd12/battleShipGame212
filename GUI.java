@@ -55,7 +55,6 @@ public class GUI extends JPanel implements MouseListener {
     
     public void paintComponent(Graphics window) {
 
-        super.paintComponent(window);
         g2d = (Graphics2D) window;
         prepGUI();
 
