@@ -1,29 +1,55 @@
-public class Player extends gameBoard{
+public class Player extends GUI {
 
-    private String name;
+    private final String name;
+    private char[][] board;
     private int count;
 
-    public Player(String s){
-        //board1=gameBoard.super();
-       super();
-       name = s;
-       count=14;
+    public Player(String s) {
 
+       name = s;
+       count = 14;
+
+       board = new char[10][10];
+
+       for (int i = 0; i < 10; i++) {
+           for (int j = 0; j < 10; j++) {
+               board[i][j] = '0';
+           }
+       }
     }
 
+    public String boardOneLine() {
 
-    public String printName()
-    {
+        String ret = "";
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                ret += j != 9 ? board[i][j] + "," : board[i][j] + "|";
+            }
+        }
+
+        return ret;
+    }
+
+    public String printName() {
+
         return name;
     }
 
-    public void hits()
-    {
+    public void hits() {
+
         count--;
     }
 
-    public String attackGuess(String coord) {
+    public void addShips(String coord) {
 
-        return coord;
+        if (!coord.equals("ZZ")) {
+            board[Integer.parseInt(coord.substring(1)) - 1][reverse.get(coord.substring(0, 1)) - 1] = 'S';
+        }
+    }
+
+    public void attackGuess(String coord) {
+
+
     }
 }

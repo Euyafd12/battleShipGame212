@@ -1,8 +1,10 @@
-import java.util.HashMap;
-import java.util.Map;
 
-public class gameBoard {
+public class gameBoard  {
     private char[][] board;
+
+
+    //This is dead
+
 
     public gameBoard() {
 
@@ -34,9 +36,8 @@ public class gameBoard {
         return ret;
     }
 
-    public void changeCoordinate(int x, int y)
-    {
-        board[x][y]='1';
+    public void changeCoordinate() {
+
     }
 
 }

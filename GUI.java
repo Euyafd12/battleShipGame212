@@ -6,17 +6,20 @@ import java.io.*;
 import java.util.*;
 
 
-public class graphics extends JPanel implements MouseListener {
+public class GUI extends JPanel implements MouseListener {
     private int x, y, baseX, baseY;
-    private Image imageBackground, imageBoard, imageBoardCoords, imageICN, imageBOOM, imageNOTBOOM;
+    private final Image imageBackground, imageBoard, imageBoardCoords, imageICN, imageBOOM, imageNOTBOOM;
     private final Map<Integer, String> letter;
-    private final Map<String, Integer> reverse;
-    private ArrayList<String> hits, misses;
+    public final Map<String, Integer> reverse;
+    private final ArrayList<String> hits, misses, ships;
+    private Graphics2D g2d;
 
-    public graphics() {
+    public GUI() {
 
+        g2d = null;
         hits = new ArrayList<>();
         misses = new ArrayList<>();
+        ships = new ArrayList<>();
 
         baseX = 977;
         baseY = 155;
@@ -52,7 +55,19 @@ public class graphics extends JPanel implements MouseListener {
     
     public void paintComponent(Graphics window) {
 
-        Graphics2D g2d = (Graphics2D) window;
+        super.paintComponent(window);
+        g2d = (Graphics2D) window;
+        prepGUI();
+
+        if (!coordinateClick().equals("ZZ")) {
+
+            //placeShips(coordinateClick());
+            //Explosion(coordinateClick());
+            Misses(coordinateClick());
+        }
+    }
+
+    public void prepGUI() {
 
         g2d.drawImage(imageBackground, 0, 0, 1920, 1080, null);
         g2d.drawImage(imageBoard, 970, 125, 850, 850, null);
@@ -62,11 +77,6 @@ public class graphics extends JPanel implements MouseListener {
         g2d.fillRect(50, 75, 350, 900);
         g2d.setColor(Color.BLACK);
         g2d.drawRect(50, 75, 350, 900);
-
-        if (!coordinateClick().equals("Out of Bounds")) {
-            Explosion(coordinateClick(), g2d);
-            //Misses(coordinateClick(), g2d);
-        }
     }
 
     public String coordinateClick() {
@@ -79,7 +89,7 @@ public class graphics extends JPanel implements MouseListener {
             return ret;
         }
         else {
-            return "Out of Bounds";
+            return "ZZ";
         }
     }
 
@@ -91,11 +101,35 @@ public class graphics extends JPanel implements MouseListener {
         repaint();
     }
 
-    public void Explosion(String a, Graphics2D g2d) {
+    public void placeShips(String a) {
 
         if (!a.equals("Out of Bounds")) {
 
+            ships.add(a);
+        }
+        for (String ship : ships) {
+
+            int C1 = Integer.parseInt(ship.substring(1)) - 1;
+            int C2 = reverse.get(ship.substring(0, 1)) - 1;
+
+            g2d.drawImage(imageBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);
+        }
+
+    }
+
+    public void Explosion(String a) {
+
+        if (!a.equals("Out of Bounds")) {
+
+            //This seems dumb I should probably remove it
             hits.add(a);
+
+            for (int i = 0; i < ships.size(); i++) {
+                if (a.equals(ships.get(i))) {
+                    ships.remove(i);
+                    break;
+                }
+            }
         }
         for (String hit : hits) {
 
@@ -107,7 +141,7 @@ public class graphics extends JPanel implements MouseListener {
         audio("explosionBOOM.wav");
     }
 
-    public void Misses(String a, Graphics2D g2d) {
+    public void Misses(String a) {
 
         if (!a.equals("Out of Bounds")) {
 
@@ -136,7 +170,7 @@ public class graphics extends JPanel implements MouseListener {
 
     public static void main(String[] args) {
 
-        new graphics().display();
+        new GUI().display();
     }
 
 
