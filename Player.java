@@ -42,20 +42,56 @@ public class Player extends GUI {
         count--;
     }
 
-    public void addShips(String coord) {
+    /*
+    public void addFiveLength(String coord) {
 
         if (count == 0) {
             if (!coord.equals("ZZ")) {
                 board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
             }
         }
-
-
-
     }
 
-    public void attackGuess(String coord) {
+    public void addFourLength(String coord) {
 
-
+        if (count == 0) {
+            if (!coord.equals("ZZ")) {
+                board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
+            }
+        }
     }
+    */
+
+    public void addThreeLength(String coord) {
+
+        if (count == 0) {
+            if (!coord.equals("ZZ")) {
+                board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
+            }
+        }
+        else {
+            if (!coord.equals("ZZ")) {
+
+                int x = reverse.get(coord.substring(0, 1)) - 1;
+                int y = Integer.parseInt(coord.substring(1)) - 1;
+
+                if (board[x + 1][y] == 'S' || board[x - 1][y] == 'S' || board[y + 1][x] == 'S' || board[y - 1][x] == 'S') {
+                    board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
+                }
+            }
+        }
+        count+=;
+    }
+
+    /*
+    public void addTwoLength(String coord) {
+
+        if (count == 0) {
+            if (!coord.equals("ZZ")) {
+                board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
+            }
+        }
+    }
+
+    */
 }
