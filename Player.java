@@ -7,7 +7,7 @@ public class Player extends GUI {
     public Player(String s) {
 
        name = s;
-       count = 14;
+       count = 0;
 
        board = new char[10][10];
 
@@ -34,6 +34,7 @@ public class Player extends GUI {
     public String printName() {
 
         return name;
+
     }
 
     public void hits() {
@@ -43,9 +44,14 @@ public class Player extends GUI {
 
     public void addShips(String coord) {
 
-        if (!coord.equals("ZZ")) {
-            board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
+        if (count == 0) {
+            if (!coord.equals("ZZ")) {
+                board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
+            }
         }
+
+
+
     }
 
     public void attackGuess(String coord) {

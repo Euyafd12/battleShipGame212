@@ -61,8 +61,8 @@ public class GUI extends JPanel implements MouseListener {
         if (!coordinateClick().equals("ZZ")) {
 
             //placeShips(coordinateClick());
-            //Explosion(coordinateClick());
-            Misses(coordinateClick());
+            Explosion(coordinateClick());
+            //Misses(coordinateClick());
         }
     }
 
