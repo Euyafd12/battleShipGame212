@@ -113,7 +113,7 @@ public class GUI extends JPanel implements MouseListener {
 
             g2d.fillRect(973 + (C1 * 85), 128 + (C2 * 85), 82, 82);
 
-            audio("place ships sound.wav");
+            audio("placeShips.wav");
             //g2d.drawImage(imageBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);
 
         }
