@@ -54,8 +54,5 @@ public class Player extends GUI {
 
     }
 
-    public void attackGuess(String coord) {
 
-
-    }
 }
