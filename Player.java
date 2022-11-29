@@ -52,6 +52,9 @@ public class Player extends GUI {
         }
     }
 
+
+
+
     public void addFourLength(String coord) {
 
         if (count == 0) {
@@ -94,4 +97,5 @@ public class Player extends GUI {
     }
 
     */
+
 }

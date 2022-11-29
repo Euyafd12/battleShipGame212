@@ -112,8 +112,11 @@ public class GUI extends JPanel implements MouseListener {
             int C2 = reverse.get(ship.substring(0, 1)) - 1;
 
             g2d.fillRect(973 + (C1 * 85), 128 + (C2 * 85), 82, 82);
-        }
 
+            audio("place ships sound.wav");
+            //g2d.drawImage(imageBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);
+
+        }
     }
 
     public void Explosion(String a) {
