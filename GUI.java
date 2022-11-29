@@ -100,6 +100,8 @@ public class GUI extends JPanel implements MouseListener {
         repaint();
     }
 
+
+    //https://www.youtube.com/watch?v=7cPTWhj3tng
     public void placeShips(String a) {
 
         if (!a.equals("Out of Bounds")) {
@@ -112,11 +114,8 @@ public class GUI extends JPanel implements MouseListener {
             int C2 = reverse.get(ship.substring(0, 1)) - 1;
 
             g2d.fillRect(973 + (C1 * 85), 128 + (C2 * 85), 82, 82);
-
-            audio("placeShips.wav");
-            //g2d.drawImage(imageBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);
-
         }
+        audio("placeShips.mp3");
     }
 
     public void Explosion(String a) {
@@ -140,7 +139,7 @@ public class GUI extends JPanel implements MouseListener {
 
             g2d.drawImage(imageBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);
         }
-        audio("explosionBOOM.wav");
+        audio("explosionBoom.wav");
     }
 
     public void Misses(String a) {
@@ -156,7 +155,7 @@ public class GUI extends JPanel implements MouseListener {
 
             g2d.drawImage(imageNOTBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);;
         }
-        audio("waterSplash.wav");
+        audio("");
     }
 
     public void audio(String a) {

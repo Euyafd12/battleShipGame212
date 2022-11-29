@@ -73,10 +73,11 @@ public class Player extends GUI {
             }
         }
         else {
-            if (!coord.equals("ZZ")) {
+            if (!coord.equals("ZZ") && count < 4) {
 
                 int x = reverse.get(coord.substring(0, 1)) - 1;
                 int y = Integer.parseInt(coord.substring(1)) - 1;
+
 
                 if (board[x + 1][y] == 'S' || board[x - 1][y] == 'S' || board[y + 1][x] == 'S' || board[y - 1][x] == 'S') {
                     board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
