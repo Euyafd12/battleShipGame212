@@ -17,6 +17,7 @@ public class gameRunner {
                 if (a != null && !a.equals("ZZ")) {
 
                     eyad.addThreeLength(a);
+                    eyad.placeShips(a);
                     System.out.println("\n" + eyad.boardOneLine());
                     break;
                 }

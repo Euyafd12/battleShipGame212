@@ -52,19 +52,6 @@ public class GUI extends JPanel implements MouseListener {
         frame.setSize(1920, 1080);
         frame.setVisible(true);
     }
-    
-    public void paintComponent(Graphics window) {
-
-        g2d = (Graphics2D) window;
-        prepGUI();
-
-        if (!coordinateClick().equals("ZZ")) {
-
-            //placeShips(coordinateClick());
-            Explosion(coordinateClick());
-            //Misses(coordinateClick());
-        }
-    }
 
     public void prepGUI() {
 
@@ -76,6 +63,12 @@ public class GUI extends JPanel implements MouseListener {
         g2d.fillRect(50, 75, 350, 900);
         g2d.setColor(Color.BLACK);
         g2d.drawRect(50, 75, 350, 900);
+    }
+
+    public void paintComponent(Graphics window) {
+
+        g2d = (Graphics2D) window;
+        prepGUI();
     }
 
     public String coordinateClick() {
@@ -100,8 +93,6 @@ public class GUI extends JPanel implements MouseListener {
         repaint();
     }
 
-
-    //https://www.youtube.com/watch?v=7cPTWhj3tng
     public void placeShips(String a) {
 
         if (!a.equals("Out of Bounds")) {
@@ -115,7 +106,7 @@ public class GUI extends JPanel implements MouseListener {
 
             g2d.fillRect(973 + (C1 * 85), 128 + (C2 * 85), 82, 82);
         }
-        audio("placeShips.mp3");
+        audio("BOOP.wav");
     }
 
     public void Explosion(String a) {
@@ -139,7 +130,7 @@ public class GUI extends JPanel implements MouseListener {
 
             g2d.drawImage(imageBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);
         }
-        audio("explosionBoom.wav");
+        audio("explosionBOOM.wav");
     }
 
     public void Misses(String a) {
@@ -155,7 +146,7 @@ public class GUI extends JPanel implements MouseListener {
 
             g2d.drawImage(imageNOTBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);;
         }
-        audio("");
+        audio("waterSplash.wav");
     }
 
     public void audio(String a) {
