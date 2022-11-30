@@ -13,7 +13,7 @@ public class Player extends GUI {
 
        for (int i = 0; i < 10; i++) {
            for (int j = 0; j < 10; j++) {
-               board[i][j] = '0';
+               board[i][j] = 'o';
            }
        }
     }
@@ -29,6 +29,10 @@ public class Player extends GUI {
         }
 
         return ret;
+    }
+
+    public int getCount() {
+        return count;
     }
 
     public String printName() {
@@ -52,9 +56,6 @@ public class Player extends GUI {
         }
     }
 
-
-
-
     public void addFourLength(String coord) {
 
         if (count == 0) {
@@ -65,25 +66,51 @@ public class Player extends GUI {
     }
     */
 
-    public void addThreeLength(String coord) {
+    public boolean addThreeLength(String coord) {
 
-        if (count == 0) {
-            if (!coord.equals("ZZ")) {
-                board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
+        if (!coord.equals("ZZ")) {
+
+            int x = reverse.get(coord.substring(0, 1)) - 1;
+            int y = Integer.parseInt(coord.substring(1)) - 1;
+
+            if (count == 0) {
+                //Inputs coordinate by converting form "A1" format to normal numbers
+                 board[x][y] = 'S';
             }
-        }
-        else {
-            if (!coord.equals("ZZ")) {
 
-                int x = reverse.get(coord.substring(0, 1)) - 1;
-                int y = Integer.parseInt(coord.substring(1)) - 1;
+            else {
 
-                if (board[x + 1][y] == 'S' || board[x - 1][y] == 'S' || board[y + 1][x] == 'S' || board[y - 1][x] == 'S') {
-                    board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
+                //Checks if coord is not in a corner and there is room for ship
+                if (x < 9 && x > 0 && y < 9 && y > 0) {
+
+                    if (board[x + 1][y] == 'S' || board[x - 1][y] == 'S' || board[y + 1][x] == 'S' || board[y - 1][x] == 'S') {
+                        board[x][y] = 'S';
+                    }
+                }
+
+                //Handle corner cases
+                else {
+
+                    //This seems like a dumb way to write this?
+
+                    if ((x == 0 && y == 0) && (board[x + 1][y] == 'S' || board[x][y + 1] == 'S')) {
+                        board[x][y] = 'S';
+                    }
+                    if ((x == 9 && y == 0) && (board[x - 1][y] == 'S' || board[x][y + 1] == 'S')) {
+                        board[x][y] = 'S';
+                    }
+                    if ((x == 0 && y == 9) && (board[x + 1][y] == 'S' || board[x][y - 1] == 'S')) {
+                        board[x][y] = 'S';
+                    }
+                    if ((x == 9 && y == 9) && (board[x - 1][y] == 'S' || board[x][y - 1] == 'S')) {
+                        board[x][y] = 'S';
+                    }
                 }
             }
+            count++;
+            return true;
         }
-        count++;
+        return false;
     }
 
     /*
