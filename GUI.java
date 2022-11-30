@@ -69,6 +69,13 @@ public class GUI extends JPanel implements MouseListener {
 
         g2d = (Graphics2D) window;
         prepGUI();
+
+        if (!coordinateClick().equals("ZZ")) {
+
+            placeShips(coordinateClick());
+            //Explosion(coordinateClick());
+            //Misses(coordinateClick());
+        }
     }
 
     public String coordinateClick() {
