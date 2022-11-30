@@ -51,6 +51,8 @@ public class GUI extends JPanel implements MouseListener {
 
         frame.setSize(1920, 1080);
         frame.setVisible(true);
+        frame.setResizable(false);
+
     }
 
     public void prepGUI() {
@@ -70,12 +72,15 @@ public class GUI extends JPanel implements MouseListener {
         g2d = (Graphics2D) window;
         prepGUI();
 
+        /*
         if (!coordinateClick().equals("ZZ")) {
 
-            placeShips(coordinateClick());
+            //placeShips(coordinateClick());
             //Explosion(coordinateClick());
             //Misses(coordinateClick());
         }
+
+         */
     }
 
     public String coordinateClick() {
@@ -97,7 +102,7 @@ public class GUI extends JPanel implements MouseListener {
 
         x = MouseInfo.getPointerInfo().getLocation().x;
         y = MouseInfo.getPointerInfo().getLocation().y;
-        repaint();
+
     }
 
     public void placeShips(String a) {

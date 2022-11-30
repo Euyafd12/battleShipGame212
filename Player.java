@@ -35,10 +35,10 @@ public class Player extends GUI {
         return count;
     }
 
+
     public String printName() {
 
         return name;
-
     }
 
     public void hits() {
@@ -46,27 +46,20 @@ public class Player extends GUI {
         count--;
     }
 
+    public void dontLie(String coord) {
+
+        if (!coord.equals("ZZ")) {
+
+            int x = reverse.get(coord.substring(0, 1)) - 1;
+            int y = Integer.parseInt(coord.substring(1)) - 1;
+
+            board[x][y] = 'S';
+            count++;
+        }
+    }
+
     /*
-    public void addFiveLength(String coord) {
-
-        if (count == 0) {
-            if (!coord.equals("ZZ")) {
-                board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
-            }
-        }
-    }
-
-    public void addFourLength(String coord) {
-
-        if (count == 0) {
-            if (!coord.equals("ZZ")) {
-                board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
-            }
-        }
-    }
-    */
-
-    public boolean addThreeLength(String coord) {
+    public void test(String coord) {
 
         if (!coord.equals("ZZ")) {
 
@@ -108,21 +101,11 @@ public class Player extends GUI {
                 }
             }
             count++;
-            return true;
-        }
-        return false;
-    }
-
-    /*
-    public void addTwoLength(String coord) {
-
-        if (count == 0) {
-            if (!coord.equals("ZZ")) {
-                board[reverse.get(coord.substring(0, 1)) - 1][Integer.parseInt(coord.substring(1)) - 1] = 'S';
-            }
         }
     }
 
-    */
+     */
+
+
 
 }
