@@ -52,22 +52,6 @@ public class GUI extends JPanel implements MouseListener {
         frame.setSize(1920, 1080);
         frame.setVisible(true);
     }
-<<<<<<< HEAD
-    
-    public void paintComponent(Graphics window) {
-
-        g2d = (Graphics2D) window;
-        prepGUI();
-
-        if (!coordinateClick().equals("ZZ")) {
-
-            placeShips(coordinateClick());
-            //Explosion(coordinateClick());
-            //Misses(coordinateClick());
-        }
-    }
-=======
->>>>>>> e04e63dde91ddbb7ee4a10937b3fb2995f190da7
 
     public void prepGUI() {
 
@@ -133,7 +117,7 @@ public class GUI extends JPanel implements MouseListener {
             //g2d.drawImage(imageBOOM, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);
 
         }
-        audio("placeShips.wav");
+        audio("BOOP.wav");
 
 
     }
