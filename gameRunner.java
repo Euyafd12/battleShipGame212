@@ -1,11 +1,20 @@
+import java.util.ArrayList;
+
 public class gameRunner {
 
     public static void main(String[] args) {
 
         Player eyad = new Player("eyad");
-        eyad.display();
+        eyad.display("eyad's game");
 
-        while (true) {
+        //Player leo = new Player("leo");
+        //leo .display("leo's game");
+
+        ArrayList<String> list = new ArrayList<>();
+
+        //Place all ships
+
+        while (eyad.getCount() < 17) {
 
             while (true) {
 
@@ -14,14 +23,18 @@ public class gameRunner {
                 //This needs to be here some reason
                 System.out.print("");
 
-                if (a != null && !a.equals("ZZ")) {
+                if (a != null && !a.equals("ZZ") && !list.contains(a)) {
 
-                    eyad.addThreeLength(a);
+                    list.add(a);
+                    eyad.dontLie(a);
                     eyad.placeShips(a);
+                    System.out.println(eyad.getCount());
                     System.out.println("\n" + eyad.boardOneLine());
                     break;
                 }
             }
         }
+
     }
+
 }
