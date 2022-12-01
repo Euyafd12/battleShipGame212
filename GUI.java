@@ -13,10 +13,13 @@ public class GUI extends JPanel implements MouseListener {
     public final Map<String, Integer> reverse;
     private final ArrayList<String> hits, misses, ships;
     private Graphics2D g2d;
+    private Graphics win;
 
     public GUI() {
 
         g2d = null;
+        win = null;
+
         hits = new ArrayList<>();
         misses = new ArrayList<>();
         ships = new ArrayList<>();
@@ -41,9 +44,9 @@ public class GUI extends JPanel implements MouseListener {
         imageNOTBOOM = new ImageIcon("notBoom.jpg").getImage();
 
     }
-    public void display() {
+    public void display(String s) {
 
-        JFrame frame = new JFrame("Battleship");
+        JFrame frame = new JFrame(s);
         frame.setIconImage(imageICN);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(this);
@@ -52,7 +55,6 @@ public class GUI extends JPanel implements MouseListener {
         frame.setSize(1920, 1080);
         frame.setVisible(true);
         frame.setResizable(false);
-
     }
 
     public void prepGUI() {
@@ -65,32 +67,44 @@ public class GUI extends JPanel implements MouseListener {
         g2d.fillRect(50, 75, 350, 900);
         g2d.setColor(Color.BLACK);
         g2d.drawRect(50, 75, 350, 900);
+
+        /*
+        switch (s) {
+            case "place" -> placeShips(coordinateClick());
+            case "explosion" -> Explosion(coordinateClick());
+            case "misses" -> Misses(coordinateClick());
+        }
+        */
+    }
+
+    public Graphics getGraphics() {
+
+        return win;
     }
 
     public void paintComponent(Graphics window) {
 
+        win = window;
         g2d = (Graphics2D) window;
         prepGUI();
 
         /*
         if (!coordinateClick().equals("ZZ")) {
 
-            //placeShips(coordinateClick());
-            //Explosion(coordinateClick());
-            //Misses(coordinateClick());
+            placeShips(coordinateClick());
+            Explosion(coordinateClick());
+            Misses(coordinateClick());
         }
+        */
 
-         */
+
     }
 
     public String coordinateClick() {
 
-        String ret = "";
-
         if (x >= baseX && x <= 1828 && y >= baseY && y <= 1005) {
 
-            ret = letter.get(((y - baseY) / 85) + 1) + "" + (((x - baseX) / 85) + 1);
-            return ret;
+            return letter.get(((y - baseY) / 85) + 1) + "" + (((x - baseX) / 85) + 1);
         }
         else {
             return "ZZ";
@@ -102,7 +116,7 @@ public class GUI extends JPanel implements MouseListener {
 
         x = MouseInfo.getPointerInfo().getLocation().x;
         y = MouseInfo.getPointerInfo().getLocation().y;
-
+        this.repaint();
     }
 
     public void placeShips(String a) {
@@ -117,7 +131,9 @@ public class GUI extends JPanel implements MouseListener {
             int C2 = reverse.get(ship.substring(0, 1)) - 1;
 
             g2d.fillRect(973 + (C1 * 85), 128 + (C2 * 85), 82, 82);
+            this.repaint();
         }
+
         audio("BOOP.wav");
     }
 
@@ -174,7 +190,7 @@ public class GUI extends JPanel implements MouseListener {
 
     public static void main(String[] args) {
 
-        new GUI().display();
+        new GUI().display("Battleship Game");
     }
 
 

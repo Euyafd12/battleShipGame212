@@ -32,18 +32,14 @@ public class Player extends GUI {
     }
 
     public int getCount() {
+
         return count;
     }
 
 
-    public String printName() {
+    public String getPlayerName() {
 
         return name;
-    }
-
-    public void hits() {
-
-        count--;
     }
 
     public void dontLie(String coord) {

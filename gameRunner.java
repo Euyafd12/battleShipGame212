@@ -5,11 +5,16 @@ public class gameRunner {
     public static void main(String[] args) {
 
         Player eyad = new Player("eyad");
-        eyad.display();
+        eyad.display("eyad's game");
+
+        //Player leo = new Player("leo");
+        //leo .display("leo's game");
 
         ArrayList<String> list = new ArrayList<>();
 
-        while(eyad.getCount() < 17) {
+        //Place all ships
+
+        while (eyad.getCount() < 17) {
 
             while (true) {
 
@@ -17,7 +22,6 @@ public class gameRunner {
 
                 //This needs to be here some reason
                 System.out.print("");
-
 
                 if (a != null && !a.equals("ZZ") && !list.contains(a)) {
 
@@ -27,7 +31,6 @@ public class gameRunner {
                     System.out.println(eyad.getCount());
                     System.out.println("\n" + eyad.boardOneLine());
                     break;
-
                 }
             }
         }
