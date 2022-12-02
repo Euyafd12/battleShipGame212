@@ -13,12 +13,10 @@ public class GUI extends JPanel implements MouseListener {
     public final Map<String, Integer> reverse;
     private final ArrayList<String> hits, misses, ships;
     private Graphics2D g2d;
-    private Graphics win;
 
     public GUI() {
 
         g2d = null;
-        win = null;
 
         hits = new ArrayList<>();
         misses = new ArrayList<>();
@@ -68,36 +66,12 @@ public class GUI extends JPanel implements MouseListener {
         g2d.setColor(Color.BLACK);
         g2d.drawRect(50, 75, 350, 900);
 
-        /*
-        switch (s) {
-            case "place" -> placeShips(coordinateClick());
-            case "explosion" -> Explosion(coordinateClick());
-            case "misses" -> Misses(coordinateClick());
-        }
-        */
-    }
-
-    public Graphics getGraphics() {
-
-        return win;
     }
 
     public void paintComponent(Graphics window) {
 
-        win = window;
         g2d = (Graphics2D) window;
         prepGUI();
-
-        /*
-        if (!coordinateClick().equals("ZZ")) {
-
-            placeShips(coordinateClick());
-            Explosion(coordinateClick());
-            Misses(coordinateClick());
-        }
-        */
-
-
     }
 
     public String coordinateClick() {
@@ -116,7 +90,6 @@ public class GUI extends JPanel implements MouseListener {
 
         x = MouseInfo.getPointerInfo().getLocation().x;
         y = MouseInfo.getPointerInfo().getLocation().y;
-        this.repaint();
     }
 
     public void placeShips(String a) {
@@ -131,7 +104,6 @@ public class GUI extends JPanel implements MouseListener {
             int C2 = reverse.get(ship.substring(0, 1)) - 1;
 
             g2d.fillRect(973 + (C1 * 85), 128 + (C2 * 85), 82, 82);
-            this.repaint();
         }
 
         audio("BOOP.wav");

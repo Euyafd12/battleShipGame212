@@ -6,9 +6,11 @@ public class gameRunner {
 
         Player eyad = new Player("eyad");
         eyad.display("eyad's game");
+        eyad.paintComponent(eyad.getGraphics());
+        eyad.prepGUI();
 
         //Player leo = new Player("leo");
-        //leo .display("leo's game");
+        //leo.display("leo's game");
 
         ArrayList<String> list = new ArrayList<>();
 
@@ -27,7 +29,10 @@ public class gameRunner {
 
                     list.add(a);
                     eyad.dontLie(a);
+                    eyad.paintComponent(eyad.getGraphics());
+                    //eyad.prepGUI();
                     eyad.placeShips(a);
+
                     System.out.println(eyad.getCount());
                     System.out.println("\n" + eyad.boardOneLine());
                     break;
