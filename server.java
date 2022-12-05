@@ -1,9 +1,8 @@
 import java.io.*;
 import java.net.*;
 
-class networkingTest {
-
-
+class server {
+    
     //This is for Eyad
 
     public static void main(String[] args) throws Exception {

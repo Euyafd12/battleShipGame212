@@ -1,9 +1,10 @@
 import java.io.*;
 import java.net.*;
 
-class clientTestingserverstuff {
+class client {
 
     //This is for Leo
+
     public static void main(String[] args) throws Exception {
 
         Socket s = new Socket("10.117.50.201", 888);
