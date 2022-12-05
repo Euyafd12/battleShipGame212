@@ -42,6 +42,7 @@ public class GUI extends JPanel implements MouseListener {
         imageNOTBOOM = new ImageIcon("notBoom.jpg").getImage();
 
     }
+
     public void display(String s) {
 
         JFrame frame = new JFrame(s);
@@ -55,6 +56,7 @@ public class GUI extends JPanel implements MouseListener {
         frame.setResizable(false);
     }
 
+
     public void prepGUI() {
 
         g2d.drawImage(imageBackground, 0, 0, 1920, 1080, null);
@@ -65,14 +67,19 @@ public class GUI extends JPanel implements MouseListener {
         g2d.fillRect(50, 75, 350, 900);
         g2d.setColor(Color.BLACK);
         g2d.drawRect(50, 75, 350, 900);
-
     }
+
 
     public void paintComponent(Graphics window) {
 
         g2d = (Graphics2D) window;
         prepGUI();
+
+        if (!coordinateClick().equals("ZZ")) {
+            Explosion(coordinateClick());
+        }
     }
+
 
     public String coordinateClick() {
 
@@ -85,12 +92,14 @@ public class GUI extends JPanel implements MouseListener {
         }
     }
 
-    @Override
+
     public void mouseClicked(MouseEvent e) {
 
         x = MouseInfo.getPointerInfo().getLocation().x;
         y = MouseInfo.getPointerInfo().getLocation().y;
+        repaint();
     }
+
 
     public void placeShips(String a) {
 
@@ -98,6 +107,7 @@ public class GUI extends JPanel implements MouseListener {
 
             ships.add(a);
         }
+
         for (String ship : ships) {
 
             int C1 = Integer.parseInt(ship.substring(1)) - 1;
@@ -108,6 +118,7 @@ public class GUI extends JPanel implements MouseListener {
 
         audio("BOOP.wav");
     }
+
 
     public void Explosion(String a) {
 
@@ -133,6 +144,7 @@ public class GUI extends JPanel implements MouseListener {
         audio("explosionBOOM.wav");
     }
 
+
     public void Misses(String a) {
 
         if (!a.equals("Out of Bounds")) {
@@ -149,6 +161,7 @@ public class GUI extends JPanel implements MouseListener {
         audio("waterSplash.wav");
     }
 
+
     public void audio(String a) {
 
         try {
@@ -160,9 +173,10 @@ public class GUI extends JPanel implements MouseListener {
         catch (Exception ignore) {}
     }
 
+
     public static void main(String[] args) {
 
-        new GUI().display("Battleship Game");
+        new GUI().display("Battleshipgame");
     }
 
 
