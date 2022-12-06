@@ -2,8 +2,16 @@ import java.io.*;
 import java.net.*;
 
 class server {
-    
+
+    private ServerSocket ss;;
+    private Socket s;
+    private PrintStream ps;
+    private BufferedReader
     //This is for Eyad
+
+    public server() {
+
+    }
 
     public static void main(String[] args) throws Exception {
 
