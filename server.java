@@ -6,7 +6,7 @@ class server {
     private ServerSocket ss;;
     private Socket s;
     private PrintStream ps;
-    private BufferedReader
+    private BufferedReader br, kb;
     //This is for Eyad
 
     public server() {
