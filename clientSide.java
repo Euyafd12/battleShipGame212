@@ -5,13 +5,15 @@ public class clientSide {
   
     // initialize socket and input output streams
     private Socket socket = null;
+
     private String input = "";
     private DataOutputStream out = null;
   
     // constructor to put ip address and port
     public clientSide(String address, int port, String s) throws IOException {
-  
-        // establish a connection
+
+            // establish a connection05516752ae5f9200b5cf7c6e
+
         try {
   
             socket = new Socket(address, port);
@@ -33,6 +35,7 @@ public class clientSide {
   
         catch (IOException i) {
   
+
             //System.out.println(i);
         }
   
@@ -47,6 +50,7 @@ public class clientSide {
   
 
   
+
             out.close();
   
             socket.close();
@@ -57,6 +61,5 @@ public class clientSide {
             System.out.println(i);
         }
     }
-  
 
 }

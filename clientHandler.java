@@ -3,10 +3,14 @@ import java.io.IOException;
 public class clientHandler {
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        serverSide ss = new serverSide(888);
 
-        String str = "bird";
-        clientSide cs = new clientSide("10.117.50.201", 888, str);
-
+        System.out.println(ss);
     }
+
+
+
+
+
 }
