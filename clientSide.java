@@ -2,43 +2,39 @@ import java.io.*;
 import java.net.*;
   
 public class clientSide {
-  
-    // initialize socket and input output streams
+
     private Socket socket = null;
     private String input = null;
     private DataOutputStream out = null;
-  
-    // constructor to put ip address and port
-    public clientSide(String address, int port, String s) throws IOException, InterruptedException {
-  
-        // establish a connection
+
+    public clientSide(String address, int port, String s) {
+
         try {
   
             socket = new Socket(address, port);
   
             System.out.println("Connected");
-  
-            // takes input from terminal
+
             input = s;
-  
-            // sends output to the socket
+
             out = new DataOutputStream(
                 socket.getOutputStream());
         }
-  
-        catch (UnknownHostException u) {
-  
+
+        catch (IOException u) {
+
             System.out.println(u);
         }
-  
-        catch (IOException i) {
-  
-            System.out.println(i);
+
+        try {
+            out.writeUTF(input);
         }
 
-        out.writeUTF(input);
+        catch (IOException u) {
 
-        // close the connection
+            System.out.println(u);
+        }
+
         try {
   
             out.close();
