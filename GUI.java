@@ -179,7 +179,6 @@ public class GUI extends JPanel implements MouseListener {
         new GUI().display("Battleshipgame");
     }
 
-
     @Override
     public void mouseReleased(MouseEvent e) {}
     @Override

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class gameRunner {
+public class gameRunnerEyad {
 
     public static void main(String[] args) {
 
@@ -9,12 +9,10 @@ public class gameRunner {
         eyad.display("eyad's game");
         eyad.paintComponent(eyad.getGraphics());
 
-        //Player leo = new Player("leo");
-        //leo.display("leo's game");
-
         ArrayList<String> list = new ArrayList<>();
 
         //Place all ships
+
 
         while (eyad.getCount() < 17) {
 
