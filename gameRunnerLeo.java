@@ -1,6 +1,9 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class gameRunnerLeo {
+
+    private static String a;
 
     public static void main(String[] args) {
 
@@ -13,17 +16,18 @@ public class gameRunnerLeo {
 
         //Place all ships
 
-        while (leo.getCount() < 17) {
+        while (leo.getCount() < 3) {
 
             while (true) {
 
-                String a = leo.coordinateClick();
+                a = leo.coordinateClick();
 
                 //This needs to be here some reason
-                System.out.print("");
+
 
                 if (a != null && !a.equals("ZZ") && !list.contains(a)) {
 
+                    System.out.println(a);
                     list.add(a);
                     leo.dontLie(a);
                     leo.paintComponent(leo.getGraphics());
@@ -35,12 +39,21 @@ public class gameRunnerLeo {
                 }
             }
         }
+        System.out.println("DONE");
+        while (true) {
 
-        String str="";
-        while(str.length()==0)
-        {
+            String b = leo.coordinateClick();
 
+            //This needs to be here some reason
+            System.out.print("");
+
+            if (b != null && !b.equals("ZZ") && !b.equals(a)) {
+                System.out.println(b);
+                clientSide cs = new clientSide("10.117.50.201", 888, b);
+                break;
+            }
         }
+
 
 
 
