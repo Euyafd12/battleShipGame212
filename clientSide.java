@@ -3,10 +3,10 @@ import java.net.*;
   
 public class clientSide {
 
-    private Socket socket = null;
+    private Socket socket;
 
-    private String input = "";
-    private DataOutputStream out = null;
+    private String input;
+    private DataOutputStream out;
 
 
     public clientSide(String address, int port, String s) {

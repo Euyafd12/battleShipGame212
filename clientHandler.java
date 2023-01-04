@@ -7,7 +7,10 @@ public class clientHandler {
 
         serverSide ss = new serverSide();
 
-        System.out.println(ss.doTheThing(888));
+
+
+        String str = ss.doTheThing(888);
+        System.out.println(str);
     }
 
 

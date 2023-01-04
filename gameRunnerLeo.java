@@ -36,5 +36,14 @@ public class gameRunnerLeo {
             }
         }
 
+        String str="";
+        while(str.length()==0)
+        {
+
+        }
+
+
+
     }
+
 }
