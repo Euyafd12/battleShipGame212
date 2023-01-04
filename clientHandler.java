@@ -7,10 +7,20 @@ public class clientHandler {
 
         serverSide ss = new serverSide();
 
+        String a = "";
 
+        while (a.length() < 1) {
 
-        String str = ss.doTheThing(888);
-        System.out.println(str);
+            String test = "";
+            try {
+                test += ss.doTheThing(888);
+            }
+            catch (Exception ignored) {
+
+            }
+            a += test;
+        }
+        System.out.println(a);
     }
 
 

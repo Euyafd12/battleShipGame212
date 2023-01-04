@@ -36,12 +36,26 @@ public class gameRunnerEyad {
             }
         }
 
-        String s = "";
 
-        while (s.length() < 1) {
+        //Sending first move
 
+        serverSide ss = new serverSide();
 
+        String a = "";
+
+        while (a.length() < 1) {
+
+            String test = "";
+            try {
+                test += ss.doTheThing(888);
+            }
+            catch (Exception ignored) {
+
+            }
+            a += test;
         }
+        
+
 
     }
 }
