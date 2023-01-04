@@ -13,7 +13,7 @@ public class gameRunnerEyad {
 
         //Place all ships
 
-        while (eyad.getCount() < 17) {
+        while (eyad.getCount() < 2) {
 
             while (true) {
 
@@ -24,6 +24,7 @@ public class gameRunnerEyad {
 
                 if (a != null && !a.equals("ZZ") && !list.contains(a)) {
 
+                    System.out.println(a);
                     list.add(a);
                     eyad.dontLie(a);
                     eyad.paintComponent(eyad.getGraphics());
@@ -54,7 +55,9 @@ public class gameRunnerEyad {
             }
             a += test;
         }
-        
+        System.out.println(a);
+        System.out.println(eyad.hitCheck(a));
+
 
 
     }
