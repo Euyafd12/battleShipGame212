@@ -18,6 +18,20 @@ public class Player extends GUI {
        }
     }
 
+    public String hitCheck(String coord) {
+
+        int x = reverse.get(coord.substring(0, 1)) - 1;
+        int y = Integer.parseInt(coord.substring(1)) - 1;
+
+        if (board[x][y] == 'S') {
+            board[x][y] = 'D';
+            return "HIT";
+        }
+        else {
+            return "MISS";
+        }
+    }
+
     public String boardOneLine() {
 
         String ret = "";
