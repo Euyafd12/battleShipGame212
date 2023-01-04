@@ -13,7 +13,6 @@ public class gameRunnerEyad {
 
         //Place all ships
 
-
         while (eyad.getCount() < 17) {
 
             while (true) {
@@ -37,6 +36,12 @@ public class gameRunnerEyad {
             }
         }
 
-    }
+        String s = "";
 
+        while (s.length() < 1) {
+
+
+        }
+
+    }
 }
