@@ -3,11 +3,14 @@ import java.net.*;
   
 public class clientSide {
 
-    private Socket socket = null;
-    private String input = null;
-    private DataOutputStream out = null;
+    private Socket socket;
+
+    private String input;
+    private DataOutputStream out;
+
 
     public clientSide(String address, int port, String s) {
+
 
         try {
   
@@ -26,6 +29,7 @@ public class clientSide {
             System.out.println(u);
         }
 
+
         try {
             out.writeUTF(input);
         }
@@ -35,8 +39,12 @@ public class clientSide {
             System.out.println(u);
         }
 
+
         try {
   
+
+  
+
             out.close();
   
             socket.close();
@@ -47,4 +55,5 @@ public class clientSide {
             System.out.println(i);
         }
     }
+
 }
