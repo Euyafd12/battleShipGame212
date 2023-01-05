@@ -21,9 +21,9 @@ public class gameRunnerLeo {
             while (true) {
 
                 a = leo.coordinateClick();
-
+                System.out.println(a);
+                System.out.println(leo.giveMeXY());
                 //This needs to be here some reason
-
 
                 if (a != null && !a.equals("ZZ") && !list.contains(a)) {
 
@@ -31,12 +31,15 @@ public class gameRunnerLeo {
                     list.add(a);
                     leo.dontLie(a);
                     leo.paintComponent(leo.getGraphics());
-                    leo.placeShips(a);
+                    //leo.placeShips(a);
 
                     System.out.println(leo.getCount());
                     System.out.println("\n" + leo.boardOneLine());
                     break;
                 }
+            }
+            if (leo.getCount() == 2) {
+                break;
             }
         }
         System.out.println("DONE");
@@ -50,7 +53,7 @@ public class gameRunnerLeo {
             if (b != null && !b.equals("ZZ") && !b.equals(a)) {
                 leo.paintComponent(leo.getGraphics());
                 System.out.println(b);
-                clientSide cs = new clientSide("10.117.50.201", 888, b);
+                clientSide cs = new clientSide("10.117.50.202", 888, b);
                 break;
             }
         }

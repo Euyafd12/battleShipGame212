@@ -43,12 +43,16 @@ public class GUI extends JPanel implements MouseListener {
 
     }
 
+    public String giveMeXY() {
+        return "" + x + "    " + y;
+    }
     public void display(String s) {
 
         JFrame frame = new JFrame(s);
         frame.setIconImage(imageICN);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(this);
+        frame.addMouseListener(this);
         addMouseListener(this);
 
         frame.setSize(1920, 1080);
@@ -74,12 +78,6 @@ public class GUI extends JPanel implements MouseListener {
 
         g2d = (Graphics2D) window;
         prepGUI();
-
-        /*
-        if (!coordinateClick().equals("ZZ")) {
-            Explosion(coordinateClick());
-        }
-        */
 
     }
 

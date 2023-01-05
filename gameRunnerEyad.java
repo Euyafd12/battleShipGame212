@@ -13,7 +13,7 @@ public class gameRunnerEyad {
 
         //Place all ships
 
-        while (eyad.getCount() < 2) {
+        while (eyad.getCount() < 3) {
 
             while (true) {
 
@@ -42,9 +42,9 @@ public class gameRunnerEyad {
 
         serverSide ss = new serverSide();
 
-        String a = "";
+        String c = "";
 
-        while (a.length() < 1) {
+        while (c.length() < 1) {
 
             String test = "";
             try {
@@ -53,10 +53,10 @@ public class gameRunnerEyad {
             catch (Exception ignored) {
 
             }
-            a += test;
+            c += test;
         }
-        System.out.println(a);
-        System.out.println(eyad.hitCheck(a));
+        System.out.println(c);
+        System.out.println(eyad.hitCheck(c));
 
 
 
