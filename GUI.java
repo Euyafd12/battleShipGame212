@@ -53,7 +53,6 @@ public class GUI extends JPanel implements MouseListener {
         frame.setIconImage(imageICN);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(this);
-        frame.addMouseListener(this);
         addMouseListener(this);
 
         frame.setSize(1920, 1080);
@@ -73,11 +72,13 @@ public class GUI extends JPanel implements MouseListener {
         g2d.setColor(Color.BLACK);
         g2d.drawRect(50, 75, 350, 900);
 
+
         Font font = new Font("Futura", Font.BOLD, 27);
         g2d.setFont(font);
 
         g2d.drawString("Welcome to BattleShip!", 75, 125);
         g2d.drawString("Welcome to BattleShip!", 75, 125);
+
     }
 
 
@@ -86,15 +87,13 @@ public class GUI extends JPanel implements MouseListener {
         g2d = (Graphics2D) window;
         prepGUI();
 
-        /*
+        
+        //Use this if all else fails
 
-        **Use this if all else fails
+        if (!coordinateClick().equals("ZZ")) {
+            Explosion(coordinateClick());
+        }
 
-
-            if (!coordinateClick().equals("ZZ")) {
-                Explosion(coordinateClick());
-            }
-        */
     }
 
 
