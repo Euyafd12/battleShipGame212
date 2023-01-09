@@ -51,8 +51,11 @@ public class gameRunnerLeo {
             System.out.print("");
 
             if (b != null && !b.equals("ZZ") && !b.equals(a)) {
+
                 leo.paintComponent(leo.getGraphics());
                 System.out.println(b);
+
+                //clientSide cs = new clientSide("localhost", 888, b);
                 clientSide cs = new clientSide("10.117.50.202", 888, b);
                 break;
             }
