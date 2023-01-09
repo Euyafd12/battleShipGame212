@@ -87,12 +87,14 @@ public class GUI extends JPanel implements MouseListener {
         g2d = (Graphics2D) window;
         prepGUI();
 
-        
+
         //Use this if all else fails
 
+        /*
         if (!coordinateClick().equals("ZZ")) {
             Explosion(coordinateClick());
         }
+        */
 
     }
 
