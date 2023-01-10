@@ -7,9 +7,10 @@ import java.util.*;
 
 
 public class GUI extends JPanel implements MouseListener {
-    private int x, y, baseX, baseY;
+    private int x, y;
+    public int baseX, baseY;
     private final Image imageBackground, imageBoard, imageBoardCoords, imageICN, imageBOOM, imageNOTBOOM;
-    private final Map<Integer, String> letter;
+    public final Map<Integer, String> letter;
     public final Map<String, Integer> reverse;
     private final ArrayList<String> hits, misses, ships;
     private Graphics2D g2d;
@@ -129,10 +130,15 @@ public class GUI extends JPanel implements MouseListener {
     }
 
 
+    public String mouseHoveronthing() {
+
+        return "" + MouseInfo.getPointerInfo().getLocation().x + " " + MouseInfo.getPointerInfo().getLocation().y;
+    }
+
     public void mouseClicked(MouseEvent e) {
 
-        x = MouseInfo.getPointerInfo().getLocation().x;
-        y = MouseInfo.getPointerInfo().getLocation().y;
+        x = (int) MouseInfo.getPointerInfo().getLocation().getX();
+        y = (int) MouseInfo.getPointerInfo().getLocation().getY();
         repaint();
     }
 

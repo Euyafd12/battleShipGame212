@@ -27,11 +27,13 @@ public class gameRunnerLeo {
 
                 if (a != null && !a.equals("ZZ") && !list.contains(a)) {
 
-                    System.out.println(a);
-                    list.add(a);
-                    leo.dontLie(a);
+                    String c = leo.convertCord(leo.mouseHoveronthing());
+
+                    System.out.println(c);
+                    list.add(c);
+                    leo.dontLie(c);
                     leo.paintComponent(leo.getGraphics());
-                    leo.placeShips(a);
+                    leo.placeShips(c);
 
                     System.out.println(leo.getCount());
                     System.out.println("\n" + leo.boardOneLine());
@@ -52,11 +54,12 @@ public class gameRunnerLeo {
 
             if (b != null && !b.equals("ZZ") && !b.equals(a)) {
 
-                leo.paintComponent(leo.getGraphics());
-                System.out.println(b);
+                //leo.paintComponent(leo.getGraphics());
+                System.out.println(leo.mouseHoveronthing());
+
 
                 //clientSide cs = new clientSide("localhost", 888, b);
-                clientSide cs = new clientSide("10.117.50.202", 888, b);
+                clientSide cs = new clientSide("10.117.50.202", 888, leo.convertCord(leo.mouseHoveronthing()));
                 break;
             }
         }
