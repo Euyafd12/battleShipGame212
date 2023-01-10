@@ -18,6 +18,27 @@ public class Player extends GUI {
        }
     }
 
+
+
+    public String convertCord(String a) {
+
+        String[] arr = a.split(" ");
+
+        int x = Integer.parseInt(arr[0]);
+        int y = Integer.parseInt(arr[1]);
+
+        if (x >= baseX && x <= 1828 && y >= baseY && y <= 1005) {
+
+            return letter.get(((y - baseY) / 85) + 1) + "" + (((x - baseX) / 85) + 1);
+        }
+        else {
+            return "ZZ";
+        }
+
+
+    }
+
+
     public String hitCheck(String coord) {
 
         int x = reverse.get(coord.substring(0, 1)) - 1;
