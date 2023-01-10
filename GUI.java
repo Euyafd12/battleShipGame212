@@ -73,18 +73,19 @@ public class GUI extends JPanel implements MouseListener {
         g2d.drawRect(50, 75, 350, 900);
 
 
-        Font font = new Font("Futura", Font.BOLD, 27);
-        g2d.setFont(font);
+        //Font font = new Font("Futura", Font.BOLD, 27);
+        //g2d.setFont(font);
 
-        g2d.drawString("Welcome to BattleShip!", 75, 125);
-        g2d.drawString("Welcome to BattleShip!", 75, 125);
+        //g2d.drawString("Welcome to BattleShip!", 75, 125);
+        //g2d.drawString("Welcome to BattleShip!", 75, 125);
 
-        g2d.drawString("-----------------------------------", 70, 150);
+        //g2d.drawString("-----------------------------------", 70, 150);
 
-        font = new Font("Futura", Font.BOLD, 24);
-        g2d.setFont(font);
-        g2d.drawString("Placing ships: ", 75, 200);
+        //font = new Font("Futura", Font.BOLD, 24);
+        //g2d.setFont(font);
+        ///g2d.drawString("Placing ships: ", 75, 200);
 
+        /*
         font = new Font("Futura", Font.BOLD, 22);
         g2d.setFont(font);
         g2d.drawString("1) Carrier [5 Length]", 85, 240);
@@ -92,6 +93,8 @@ public class GUI extends JPanel implements MouseListener {
         g2d.drawString("3) Cruiser [3 Length]", 85, 320);
         g2d.drawString("4) Submarine [3 Length]", 85, 360);
         g2d.drawString("5) Destroyer [2 Length]", 85, 400);
+
+         */
 
 
     }
@@ -129,7 +132,6 @@ public class GUI extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
         x = MouseInfo.getPointerInfo().getLocation().x;
-        y = MouseInfo.getPointerInfo().getLocation().y;
         y = MouseInfo.getPointerInfo().getLocation().y;
         repaint();
     }

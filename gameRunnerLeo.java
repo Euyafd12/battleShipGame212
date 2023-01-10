@@ -31,7 +31,7 @@ public class gameRunnerLeo {
                     list.add(a);
                     leo.dontLie(a);
                     leo.paintComponent(leo.getGraphics());
-                    //leo.placeShips(a);
+                    leo.placeShips(a);
 
                     System.out.println(leo.getCount());
                     System.out.println("\n" + leo.boardOneLine());
