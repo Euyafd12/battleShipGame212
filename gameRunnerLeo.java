@@ -5,7 +5,7 @@ public class gameRunnerLeo {
 
     private static String a;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Player leo = new Player("leo");
 
@@ -16,6 +16,8 @@ public class gameRunnerLeo {
 
         //Place all ships
 
+
+        //Make Leo's attack on click, not on time
         while (leo.getCount() < 3) {
 
             while (true) {
@@ -52,7 +54,7 @@ public class gameRunnerLeo {
             //This needs to be here some reason
             System.out.print("");
 
-            if (b != null && !b.equals("ZZ") && !b.equals(a)) {
+            if (b != null && !b.equals("ZZ")) {
 
                 //leo.paintComponent(leo.getGraphics());
                 System.out.println(leo.mouseHoveronthing());
@@ -63,6 +65,28 @@ public class gameRunnerLeo {
                 break;
             }
         }
+
+        Thread.sleep(4000);
+        serverSide ss = new serverSide();
+
+        String c = "";
+
+        while (c.length() < 1 || c.equals("ZZ")) {
+
+            if (c.equals("ZZ")) {
+                c = "";
+            }
+            String test = "";
+            try {
+                test += ss.doTheThing(888);
+            }
+            catch (Exception ignored) {
+
+            }
+            c += test;
+        }
+        System.out.println(c);
+        System.out.println(leo.hitCheck(c));
 
 
 
