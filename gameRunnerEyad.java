@@ -57,7 +57,7 @@ public class gameRunnerEyad {
         }
         System.out.println(c);
         System.out.println(eyad.hitCheck(c));
-
+         
 
 
     }
