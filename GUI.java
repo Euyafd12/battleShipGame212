@@ -73,16 +73,16 @@ public class GUI extends JPanel implements MouseListener {
         g2d.drawRect(50, 75, 350, 900);
 
 
-        Font font = new Font("Futura", Font.BOLD, 27);
-        g2d.setFont(font);
+        //Font font = new Font("Futura", Font.BOLD, 27);
+        //g2d.setFont(font);
 
         //g2d.drawString("Welcome to BattleShip!", 75, 125);
         //g2d.drawString("Welcome to BattleShip!", 75, 125);
 
         //g2d.drawString("-----------------------------------", 70, 150);
 
-        font = new Font("Futura", Font.BOLD, 24);
-        g2d.setFont(font);
+        //font = new Font("Futura", Font.BOLD, 24);
+        //g2d.setFont(font);
         ///g2d.drawString("Placing ships: ", 75, 200);
 
         /*
