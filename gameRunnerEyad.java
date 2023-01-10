@@ -2,7 +2,7 @@ import java.util.*;
 
 public class gameRunnerEyad {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Player eyad = new Player("eyad");
 
@@ -55,9 +55,30 @@ public class gameRunnerEyad {
             }
             c += test;
         }
-        System.out.println(c);
+
         System.out.println(eyad.hitCheck(c));
-         
+        System.out.println(eyad.boardOneLine());
+        System.out.println(c);
+
+        Thread.sleep(4000);
+        while (true) {
+
+            String b = eyad.coordinateClick();
+
+            //This needs to be here some reason
+            System.out.print("");
+
+            if (b != null && !b.equals("ZZ")) {
+
+                //leo.paintComponent(leo.getGraphics());
+                System.out.println(eyad.mouseHoveronthing());
+
+
+                //clientSide cs = new clientSide("localhost", 888, b);
+                clientSide cs = new clientSide("10.117.50.201", 888, eyad.convertCord(eyad.mouseHoveronthing()));
+                break;
+              }
+       }
 
 
     }
