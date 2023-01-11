@@ -18,7 +18,7 @@ public class gameRunnerEyad {
             while (true) {
 
                 String a = eyad.coordinateClick();
-
+                System.out.println(a);
                 //This needs to be here some reason
                 System.out.print("");
 
@@ -58,20 +58,17 @@ public class gameRunnerEyad {
 
         System.out.println(eyad.hitCheck(c));
         System.out.println(eyad.boardOneLine());
-        System.out.println(c);
+        System.out.println(c + " received click");
 
-        Thread.sleep(4000);
+
         while (true) {
 
-            String b = eyad.coordinateClick();
 
-            //This needs to be here some reason
-            System.out.print("");
 
-            if (b != null && !b.equals("ZZ")) {
+            if (pressed==true) {
 
                 //leo.paintComponent(leo.getGraphics());
-                System.out.println(eyad.mouseHoveronthing());
+                System.out.println(eyad.mouseHoveronthing() + " hover coordinates");
 
 
                 //clientSide cs = new clientSide("localhost", 888, b);
