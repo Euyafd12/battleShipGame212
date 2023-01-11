@@ -65,7 +65,7 @@ public class gameRunnerEyad {
 
 
 
-            if (pressed==true) {
+            if (eyad.getPressed()) {
 
                 //leo.paintComponent(leo.getGraphics());
                 System.out.println(eyad.mouseHoveronthing() + " hover coordinates");

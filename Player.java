@@ -89,5 +89,8 @@ public class Player extends GUI {
         }
     }
 
-    
+    public boolean getPressed()
+    {
+        return pressed;
+    }
 }
