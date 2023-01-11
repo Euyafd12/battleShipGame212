@@ -20,6 +20,10 @@ public class gameRunnerLeo {
         //Make Leo's attack on click, not on time
         while (leo.getCount() < 3) {
 
+            if (leo.getCount() == 2) {
+                break;
+            }
+
             while (true) {
 
                 a = leo.coordinateClick();
@@ -42,9 +46,6 @@ public class gameRunnerLeo {
                     break;
                 }
             }
-            if (leo.getCount() == 2) {
-                break;
-            }
         }
         System.out.println("DONE");
         while (true) {
@@ -66,7 +67,7 @@ public class gameRunnerLeo {
             }
         }
 
-        Thread.sleep(4000);
+
         serverSide ss = new serverSide();
 
         String c = "";
@@ -87,6 +88,7 @@ public class gameRunnerLeo {
         }
         System.out.println(c);
         System.out.println(leo.hitCheck(c));
+        System.out.println(leo.boardOneLine());
 
 
 
