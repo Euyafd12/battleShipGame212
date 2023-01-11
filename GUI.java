@@ -140,13 +140,17 @@ public class GUI extends JPanel implements MouseListener {
 
         x = (int) MouseInfo.getPointerInfo().getLocation().getX();
         y = (int) MouseInfo.getPointerInfo().getLocation().getY();
+
         pressed=true;
+
         try {
             Thread.sleep(100);
         } catch (InterruptedException ex) {
             throw new RuntimeException(ex);
         }
+
         pressed=false;
+
         repaint();
     }
 
