@@ -18,6 +18,7 @@ public class GUI extends JPanel implements MouseListener {
 
     public GUI() {
 
+        pressed = false;
         g2d = null;
 
         hits = new ArrayList<>();
@@ -130,11 +131,6 @@ public class GUI extends JPanel implements MouseListener {
         }
     }
 
-
-    public void mousePressed(MouseEvent e) {
-        pressed = true;
-    }
-
     public String mouseHoveronthing() {
 
         return "" + MouseInfo.getPointerInfo().getLocation().x + " " + MouseInfo.getPointerInfo().getLocation().y;
@@ -144,6 +140,13 @@ public class GUI extends JPanel implements MouseListener {
 
         x = (int) MouseInfo.getPointerInfo().getLocation().getX();
         y = (int) MouseInfo.getPointerInfo().getLocation().getY();
+        pressed = true;
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
+        }
+        pressed = false;
         repaint();
     }
 
@@ -227,6 +230,9 @@ public class GUI extends JPanel implements MouseListener {
         new GUI().display("Battleshipgame");
     }
 
+
+    @Override
+    public void mousePressed(MouseEvent e) {}
     @Override
     public void mouseReleased(MouseEvent e) {}
     @Override

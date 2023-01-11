@@ -28,8 +28,6 @@ public class gameRunnerLeo {
 
                 a = leo.coordinateClick();
                 System.out.println(a);
-                System.out.println(leo.giveMeXY());
-                //This needs to be here some reason
 
                 if (a != null && !a.equals("ZZ") && !list.contains(a)) {
 
