@@ -64,11 +64,11 @@ public class gameRunnerEyad {
         while (true) {
 
 
-
+            System.out.print("");
             if (eyad.getPressed()) {
 
                 //leo.paintComponent(leo.getGraphics());
-                System.out.println(eyad.mouseHoveronthing() + " hover coordinates");
+
 
 
                 //clientSide cs = new clientSide("localhost", 888, b);
