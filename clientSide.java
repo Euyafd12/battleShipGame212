@@ -16,7 +16,7 @@ public class clientSide {
   
             socket = new Socket(address, port);
   
-            System.out.println("Connected");
+            //System.out.println("Connected");
 
             input = s;
 

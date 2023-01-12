@@ -19,13 +19,13 @@ public class serverSide {
         try {
             server = new ServerSocket(port);
 
-            System.out.println("Server started");
+            //System.out.println("Server started");
 
-            System.out.println("Waiting for a client ...");
+            //System.out.println("Waiting for a client ...");
 
             socket = server.accept();
 
-            System.out.println("Client accepted");
+            //System.out.println("Client accepted");
 
             in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
 
@@ -42,7 +42,7 @@ public class serverSide {
             }
 
 
-            System.out.println("Closing connection");
+            //System.out.println("Closing connection");
 
             socket.close();
 

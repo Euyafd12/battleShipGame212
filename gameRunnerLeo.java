@@ -1,95 +1,122 @@
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class gameRunnerLeo {
 
-    private static String a;
-
     public static void main(String[] args) throws InterruptedException {
 
+        int Port = 800;
+        //Initialize player and board
         Player leo = new Player("leo");
+        leo.display("Leo's game");
 
-        leo.display("leo's game");
-        leo.paintComponent(leo.getGraphics());
+        //How many ships do we want in the game
+        int shipAmountRule = 3;
 
-        ArrayList<String> list = new ArrayList<>();
+        //List of existing ships to prevent overwrite
+        ArrayList<String> shipList = new ArrayList<>();
 
         //Place all ships
-
-
-        //Make Leo's attack on click, not on time
-        while (leo.getCount() < 3) {
-
-            if (leo.getCount() == 2) {
-                break;
-            }
+        while (leo.getCount() < shipAmountRule) {
 
             while (true) {
 
-                a = leo.coordinateClick();
-                System.out.println(a);
+                System.out.print("");
 
-                if (a != null && !a.equals("ZZ") && !list.contains(a)) {
+                if (leo.getPressed()) {
 
-                    String c = leo.convertCord(leo.mouseHoveronthing());
+                    String shipCoord = leo.convertCord(leo.getMouseHover());
 
-                    System.out.println(c);
-                    list.add(c);
-                    leo.dontLie(c);
-                    leo.paintComponent(leo.getGraphics());
-                    leo.placeShips(c);
+                    if (!shipList.contains(shipCoord) && !shipCoord.equals("ZZ")) {
 
-                    System.out.println(leo.getCount());
-                    System.out.println("\n" + leo.boardOneLine());
-                    break;
+                        shipList.add(shipCoord);
+                        leo.placeShip(shipCoord);
+
+                        leo.paintComponent(leo.getGraphics());
+                        leo.g2dShipPlaced(shipCoord);
+                        break;
+
+                    }
                 }
             }
         }
-        System.out.println("DONE");
-        while (true) {
 
-            String b = leo.coordinateClick();
+        Thread.sleep(100);
+        System.out.println("DONE PLACING SHIPS; TIME TO PLAY" + "\n");
 
-            //This needs to be here some reason
-            System.out.print("");
+        while (leo.getCount() > 0) {
 
-            if (b != null && !b.equals("ZZ")) {
+            //Send Attack Coordinate
+            String attackCoord = "";
 
-                //leo.paintComponent(leo.getGraphics());
-                System.out.println(leo.mouseHoveronthing());
+            while (true) {
 
+                System.out.print("");
 
-                //clientSide cs = new clientSide("localhost", 888, b);
-                clientSide cs = new clientSide("10.117.50.202", 888, leo.convertCord(leo.mouseHoveronthing()));
-                break;
+                if (leo.getPressed()) {
+
+                    attackCoord += leo.convertCord(leo.getMouseHover());
+
+                    new clientSide("localhost", Port, attackCoord);
+                    //new clientSide("10.117.50.202", Port, attackCoord);
+                    break;
+                }
             }
+            Port++;
+
+            //Receive if you hit or missed your attack
+            serverSide ss1 = new serverSide();
+            String hitOrMiss = "";
+
+            while (hitOrMiss.length() < 1) {
+
+                String test = "";
+                try {
+                    test += ss1.doTheThing(Port);
+                } catch (Exception ignored) {
+                }
+                hitOrMiss += test;
+            }
+            //hit
+            if (hitOrMiss.equals("HIT")) {
+                leo.g2dHit(attackCoord);
+            } else {
+                leo.g2dMiss(attackCoord);
+            }
+            Port++;
+
+
+            //Receive Attack Coordinate and check if it hits
+            serverSide ss2 = new serverSide();
+            String receivedClick = "";
+
+            while (receivedClick.length() < 1 || receivedClick.equals("ZZ")) {
+
+                if (receivedClick.equals("ZZ")) {
+                    receivedClick = "";
+                }
+                String test = "";
+                try {
+                    test += ss2.doTheThing(Port);
+                } catch (Exception ignored) {
+
+                }
+                receivedClick += test;
+            }
+            Port++;
+
+            //Effect board depending on HIT or MISS
+            if (leo.hitCheck(receivedClick).equals("HIT")) {
+                leo.g2dShipDamage(receivedClick);
+                leo.dropCount();
+                new clientSide("localhost", Port, "HIT");
+                //new clientSide("10.117.50.201, Port,"HIT");
+            } else {
+                new clientSide("localhost", Port, "MISS");
+                //new clientSide("10.117.50.201, Port,"MISS");
+            }
+            Port++;
         }
-
-
-        serverSide ss = new serverSide();
-
-        String c = "";
-
-        while (c.length() < 1 || c.equals("ZZ")) {
-
-            if (c.equals("ZZ")) {
-                c = "";
-            }
-            String test = "";
-            try {
-                test += ss.doTheThing(888);
-            }
-            catch (Exception ignored) {
-
-            }
-            c += test;
-        }
-        System.out.println(c);
-        System.out.println(leo.hitCheck(c));
-        System.out.println(leo.boardOneLine());
-
-
-
+        System.out.println("YOU LOSE");
 
     }
 

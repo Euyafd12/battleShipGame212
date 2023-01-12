@@ -18,8 +18,6 @@ public class Player extends GUI {
        }
     }
 
-
-
     public String convertCord(String a) {
 
         String[] arr = a.split(" ");
@@ -34,10 +32,11 @@ public class Player extends GUI {
         else {
             return "ZZ";
         }
-
-
     }
 
+    public void dropCount() {
+        count--;
+    }
 
     public String hitCheck(String coord) {
 
@@ -71,26 +70,22 @@ public class Player extends GUI {
         return count;
     }
 
-
     public String getPlayerName() {
 
         return name;
     }
 
-    public void dontLie(String coord) {
+    public void placeShip(String coord) {
 
-        if (!coord.equals("ZZ")) {
+        int x = reverse.get(coord.substring(0, 1)) - 1;
+        int y = Integer.parseInt(coord.substring(1)) - 1;
 
-            int x = reverse.get(coord.substring(0, 1)) - 1;
-            int y = Integer.parseInt(coord.substring(1)) - 1;
-
-            board[x][y] = 'S';
-            count++;
-        }
+        board[x][y] = 'S';
+        count++;
     }
 
-    public boolean getPressed()
-    {
+    public boolean getPressed() {
+
         return pressed;
     }
 }
