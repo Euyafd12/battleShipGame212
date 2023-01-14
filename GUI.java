@@ -36,13 +36,13 @@ public class GUI extends JPanel implements MouseListener {
             reverse.put(letter.get(i+1), i+1);
         }
 
-        imageBoardCoords = new ImageIcon("coordinates.png").getImage();
-        imageBoardGrid = new ImageIcon("grid.png").getImage();
-        imageBackground = new ImageIcon("background.jpg").getImage();
-        imageICN = new ImageIcon("windowIcon.png").getImage();
-        imageAttackHit = new ImageIcon("picAttackHit.png").getImage();
-        imageAttackMiss = new ImageIcon("picAttackMiss.png").getImage();
-        imageShipDamage = new ImageIcon("picShipDamage.png").getImage();
+        imageBoardCoords = new ImageIcon(getClass().getResource("coordinates.png")).getImage();
+        imageBoardGrid = new ImageIcon(getClass().getResource("grid.png")).getImage();
+        imageBackground = new ImageIcon(getClass().getResource("background.jpg")).getImage();
+        imageICN = new ImageIcon(getClass().getResource("windowIcon.png")).getImage();
+        imageAttackHit = new ImageIcon(getClass().getResource("picAttackHit.png")).getImage();
+        imageAttackMiss = new ImageIcon(getClass().getResource("picAttackMiss.png")).getImage();
+        imageShipDamage = new ImageIcon(getClass().getResource("picShipDamage.png")).getImage();
     }
 
     public void display(String s) {
@@ -176,7 +176,7 @@ public class GUI extends JPanel implements MouseListener {
             int C1 = Integer.parseInt(miss.substring(1)) - 1;
             int C2 = reverse.get(miss.substring(0, 1)) - 1;
 
-            g2d.drawImage(imageAttackMiss, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);;
+            g2d.drawImage(imageAttackMiss, 973 + (C1 * 85), 128 + (C2 * 85), 82, 82, null);
         }
         audio("soundSplash.wav");
     }
@@ -184,7 +184,7 @@ public class GUI extends JPanel implements MouseListener {
     public void audio(String a) {
 
         try {
-            AudioInputStream system = AudioSystem.getAudioInputStream(new File(a));
+            AudioInputStream system = AudioSystem.getAudioInputStream(getClass().getResource(a));
             Clip sound = AudioSystem.getClip();
             sound.open(system);
             sound.start();

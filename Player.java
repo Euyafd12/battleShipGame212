@@ -1,7 +1,7 @@
 public class Player extends GUI {
 
     private final String name;
-    private char[][] board;
+    private final char[][] board;
     private int count;
 
     public Player(String s) {
@@ -35,6 +35,7 @@ public class Player extends GUI {
     }
 
     public void dropCount() {
+
         count--;
     }
 
@@ -50,19 +51,6 @@ public class Player extends GUI {
         else {
             return "MISS";
         }
-    }
-
-    public String boardOneLine() {
-
-        String ret = "";
-
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                ret += j != 9 ? board[i][j] + "," : board[i][j] + "|";
-            }
-        }
-
-        return ret;
     }
 
     public int getCount() {
