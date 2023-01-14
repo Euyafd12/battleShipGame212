@@ -14,35 +14,24 @@ public class serverSide {
         in = null;
     }
 
-    public String doTheThing(int port) {
+    public String receiveString(int port) {
 
         try {
+
             server = new ServerSocket(port);
-
-            //System.out.println("Server started");
-
-            //System.out.println("Waiting for a client ...");
-
             socket = server.accept();
-
-            //System.out.println("Client accepted");
 
             in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
 
             String line = "";
 
-
             try {
                 line = in.readUTF();
             }
-
             catch (IOException i) {
 
                 System.out.println(i);
             }
-
-
-            //System.out.println("Closing connection");
 
             socket.close();
 
@@ -50,11 +39,12 @@ public class serverSide {
 
             return line;
         }
-
         catch (IOException i) {
 
             System.out.println(i);
         }
+
+
         return "ERROR";
     }
 }

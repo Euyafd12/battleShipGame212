@@ -9,8 +9,8 @@ public class GUI extends JPanel implements MouseListener {
     public int baseX, baseY;
     public boolean pressed;
     private final Image imageBackground, imageBoardGrid, imageBoardCoords, imageICN, imageAttackHit, imageAttackMiss, imageShipDamage;
-    public final Map<Integer, String> letter;
-    public final Map<String, Integer> reverse;
+    public Map<Integer, String> letter;
+    public Map<String, Integer> reverse;
     private final ArrayList<String> g2dListHits, g2dListMisses, g2dListShips, g2dListDamage;
     private Graphics2D g2d;
 
@@ -89,19 +89,17 @@ public class GUI extends JPanel implements MouseListener {
         g2d.drawString("3) Completely destroy all of", 85, 360);
         g2d.drawString("your opponent's battleships", 85, 400);
 
-
-        int a = 350;
         font = new Font("Futura", Font.BOLD, 24);
         g2d.setFont(font);
-        g2d.drawString("Placing ships: ", 75, 200 + a);
+        g2d.drawString("Placing ships: ", 75, 550);
 
         font = new Font("Futura", Font.BOLD, 22);
         g2d.setFont(font);
-        g2d.drawString("1) Carrier [5 Length]", 85, 240 + a);
-        g2d.drawString("2) Battleship [4 Length]", 85, 280 + a);
-        g2d.drawString("3) Cruiser [3 Length]", 85, 320 + a);
-        g2d.drawString("4) Submarine [3 Length]", 85, 360 + a);
-        g2d.drawString("5) Destroyer [2 Length]", 85, 400 + a);
+        g2d.drawString("1) Carrier [5 Length]", 85, 590);
+        g2d.drawString("2) Battleship [4 Length]", 85, 630);
+        g2d.drawString("3) Cruiser [3 Length]", 85, 670);
+        g2d.drawString("4) Submarine [3 Length]", 85, 710);
+        g2d.drawString("5) Destroyer [2 Length]", 85, 750);
     }
 
     public void paintComponent(Graphics window) {
@@ -121,10 +119,7 @@ public class GUI extends JPanel implements MouseListener {
 
         try {
             Thread.sleep(50);
-        }
-        catch (InterruptedException ex) {
-            throw new RuntimeException(ex);
-        }
+        } catch (InterruptedException ignored) {}
 
         pressed = false;
     }
@@ -140,9 +135,7 @@ public class GUI extends JPanel implements MouseListener {
 
             g2d.setColor(Color.GRAY);
             g2d.fillRect(973 + (C1 * 85), 128 + (C2 * 85), 82, 82);
-
         }
-
         audio("soundShipPlace.wav");
     }
 
@@ -195,10 +188,7 @@ public class GUI extends JPanel implements MouseListener {
             Clip sound = AudioSystem.getClip();
             sound.open(system);
             sound.start();
-        }
-        catch (Exception ignore) {
-            System.out.println("Lol");
-        }
+        } catch (Exception ignore) {}
     }
 
     public static void main(String[] args) {

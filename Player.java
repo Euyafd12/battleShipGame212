@@ -70,7 +70,7 @@ public class Player extends GUI {
         return count;
     }
 
-    public String getPlayerName() {
+    public String getName() {
 
         return name;
     }

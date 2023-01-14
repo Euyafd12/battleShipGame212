@@ -1,96 +1,99 @@
 import java.util.*;
 
-public class gameRunnerEyad {
-
-
-    public static void main(String[] args) throws InterruptedException {
+public class gameRunnerPlayer1 {
+    public void run() throws InterruptedException {
 
         int Port = 800;
-        //Initialize player and board
-        Player eyad = new Player("Eyad");
-        eyad.display("Eyad's game");
 
-        //How many ships do we want in the game
-        int shipAmountRule = 3;
+        //Initialize Player and Board
+        Player player = new Player("Eyad");
+        player.display("" + player.getName() + "'s Game");
 
-        //List of existing ships to prevent overwrite
+        //How Many Ships Do We Want In The Game
+        int shipAmountRule = 17;
+
+        //List of Existing Ships to Prevent Overwrite
         ArrayList<String> shipList = new ArrayList<>();
 
-        //Place all ships
-        while (eyad.getCount() < shipAmountRule) {
+        //Start Ship Placing Phase
+        while (player.getCount() < shipAmountRule) {
 
             while (true) {
 
                 System.out.print("");
 
-                if (eyad.getPressed()) {
+                if (player.getPressed()) {
 
-                    String shipCoord = eyad.convertCord(eyad.getMouseHover());
+                    String shipCoord = player.convertCord(player.getMouseHover());
 
                     if (!shipList.contains(shipCoord) && !shipCoord.equals("ZZ")) {
 
                         shipList.add(shipCoord);
-                        eyad.placeShip(shipCoord);
-
-                        eyad.paintComponent(eyad.getGraphics());
-                        eyad.g2dShipPlaced(shipCoord);
-
+                        player.placeShip(shipCoord);
+                        player.paintComponent(player.getGraphics());
+                        player.g2dShipPlaced(shipCoord);
                         break;
-
                     }
                 }
             }
         }
 
+
+
+        //Start Game Phase
         Thread.sleep(100);
         System.out.println("DONE PLACING SHIPS; TIME TO PLAY" + "\n");
 
-        while (eyad.getCount() > 0) {
 
-            //Receive Attack Coordinate and check if it hits
+        while (player.getCount() > 0) {
+
+            //Receive Attack Coordinate And Check If It Hits
             serverSide ss1 = new serverSide();
             String receivedClick = "";
 
             while (receivedClick.length() < 1) {
 
-                String test = "";
                 try {
-                    test += ss1.doTheThing(Port);
-                } catch (Exception ignored) {
-
-                }
-                receivedClick += test;
+                    receivedClick += ss1.receiveString(Port);
+                } catch (Exception ignored) {}
             }
             Port++;
+
+
 
             //Effect the two boards depending on HIT or MISS
-            if (eyad.hitCheck(receivedClick).equals("HIT")) {
-                eyad.g2dShipDamage(receivedClick);
-                eyad.dropCount();
+            if (player.hitCheck(receivedClick).equals("HIT")) {
+
+                player.g2dShipDamage(receivedClick);
+                player.dropCount();
                 new clientSide("localhost", Port, "HIT");
-                //new clientSide("10.117.50.201, Port,"HIT");
-            } else {
+            }
+            else {
                 new clientSide("localhost", Port, "MISS");
-                //new clientSide("10.117.50.201", Port,"HIT");
             }
             Port++;
 
 
-            String attackCoord = "";
+
             //Send Attack Coordinate
+            String attackCoord = "";
+
             while (true) {
 
                 System.out.print("");
-                if (eyad.getPressed()) {
 
-                    attackCoord += eyad.convertCord(eyad.getMouseHover());
+                if (player.getPressed()) {
+
+                    attackCoord += player.convertCord(player.getMouseHover());
 
                     new clientSide("localhost", Port, attackCoord);
-                    //new clientSide("10.117.50.201", Port, attackCord);
                     break;
                 }
             }
             Port++;
+
+
+
 
             //Receive if you hit or missed your attack
             serverSide ss2 = new serverSide();
@@ -100,20 +103,24 @@ public class gameRunnerEyad {
 
                 String test = "";
                 try {
-                    test += ss2.doTheThing(Port);
+                    test += ss2.receiveString(Port);
                 } catch (Exception ignored) {
                 }
                 hitOrMiss += test;
             }
 
             if (hitOrMiss.equals("HIT")) {
-                eyad.g2dHit(attackCoord);
+                player.g2dHit(attackCoord);
             } else {
-                eyad.g2dMiss(attackCoord);
+                player.g2dMiss(attackCoord);
             }
             Port++;
         }
         System.out.println("YOU LOSE");
+    }
 
+    public static void main(String[] args) throws InterruptedException {
+
+        new gameRunnerPlayer1().run();
     }
 }
